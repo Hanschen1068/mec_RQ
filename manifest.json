@@ -1,0 +1,15 @@
+{
+  "name": "Mecenat App",
+  "short_name": "Mecenat",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "start_url": "index.html",
+  "icons": [
+    {
+      "src": "Icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
