@@ -1,97 +1,130 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-<meta charset="UTF-8" /> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-<title>Mecenat App</title> 
-<meta name="apple-mobile-web-app-capable" content="yes"> 
-<meta name="apple-mobile-web-app-status-bar-style" content="default"> 
-<meta name="apple-mobile-web-app-title" content="Mecenat App"> 
-<link rel="apple-touch-icon" href="Icon.png"> 
-<style> 
-body { margin: 0; overflow: hidden; background: black; height: 100vh; } 
-section { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: opacity 0.6s ease; } 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mecenat App</title>
 
-/* --- First page --- */ 
-#home { background-image: url('background.jpg'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: white; z-index: 1; } 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Mecenat App">
+  <link rel="apple-touch-icon" href="Icon.png">
 
-#second { opacity: 0; pointer-events: none; z-index: 0; } 
-#second.active { opacity: 1; pointer-events: auto; z-index: 2; } 
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      height: 100vh;
+    }
 
-/* --- Third page --- */
-#third { opacity: 0; pointer-events: none; z-index: 0; }
-#third.active { opacity: 1; pointer-events: auto; z-index: 3; }
+    section {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transition: opacity 0.6s ease;
+    }
 
-/* Original button style (unchanged) */
-button { padding: 16px 30px; background: rgba(255, 255, 255, 0.4); color: white; border: 1px solid rgba(255, 255, 255, 0.6); border-radius: 8px; font-size: 3px; cursor: pointer; transition: all 0.3s; position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%); } 
-button:hover { background: rgba(255, 255, 255, 0.6); } 
+    /* --- First page --- */
+    #home {
+      background-image: url('background.jpg');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: white;
+      z-index: 1;
+    }
 
-/* Top-left button for second page */
-.topLeftBtn {
-  top: 20px;
-  left: 20px;
-  bottom: auto;
-  transform: none;
-  font-size: 12px;
-}
+    #second {
+      opacity: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-/* --- Second page content --- */ 
-img { max-width: 100%; max-height: 100%; object-fit: contain; } 
-video { position: absolute; top: 68vh; left: 31vw; width: 32vw; max-width: 150px; transform: translate(-50%, -50%); border-radius: 12px; } 
+    #second.active {
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 2;
+    }
 
-</style> 
-</head> 
+    button {
+      padding: 16px 30px;
+      background: rgba(255, 255, 255, 0.4);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 8px;
+      font-size: 3px;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
 
-<body> 
+    button:hover {
+      background: rgba(255, 255, 255, 0.6);
+    }
 
-<!-- First screen --> 
-<section id="home"> 
-<button onclick="goToSecond()">Go to My Page</button> 
-</section> 
+    /* --- Second page content --- */
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
 
-<!-- Second screen --> 
-<section id="second"> 
-<button class="topLeftBtn" onclick="goToThird()">Next</button>
-<img src="RQ_2026.jpg" alt="Background Image"> 
-<video src="SL_logo.mp4" autoplay playsinline muted loop preload="auto" webkit-playsinline> 
-</video> 
-</section> 
+    video {
+      position: absolute;
+      top: 68vh;
+      left: 31vw;
+      width: 32vw;
+      max-width: 150px;
+      transform: translate(-50%, -50%);
+      border-radius: 12px;
+    }
+  </style>
+</head>
 
-<!-- Third screen --> 
-<section id="third">
-<button class="topLeftBtn" onclick="goBackToSecond()">Back</button>
-<img src="Third_RQ.png" alt="Third Page">
-</section>
+<body>
 
-<script> 
-function goToSecond() { 
-const home = document.getElementById("home"); 
-const second = document.getElementById("second"); 
-home.style.opacity = "0"; 
-setTimeout(() => { 
-home.style.display = "none"; 
-second.classList.add("active"); 
-}, 600); 
-} 
+  <!-- First screen -->
+  <section id="home">
+    <button onclick="goToSecond()">Go to My Page</button>
+  </section>
 
-function goToThird() {
-const second = document.getElementById("second");
-const third = document.getElementById("third");
-second.classList.remove("active");
-setTimeout(() => {
-third.classList.add("active");
-}, 600);
-}
+  <!-- Second screen -->
+  <section id="second">
+    <img src="RQ_2026.jpg" alt="Background Image">
+    <video
+      src="SL_logo.mp4"
+      autoplay
+      playsinline
+      muted
+      loop
+      preload="auto"
+      webkit-playsinline>
+    </video>
+  </section>
 
-function goBackToSecond() {
-const second = document.getElementById("second");
-const third = document.getElementById("third");
-third.classList.remove("active");
-setTimeout(() => {
-second.classList.add("active");
-}, 600);
-}
-</script> 
+  <script>
+    function goToSecond() {
+      const home = document.getElementById("home");
+      const second = document.getElementById("second");
 
-</body> 
+      home.style.opacity = "0";
+
+      setTimeout(() => {
+        home.style.display = "none";
+        second.classList.add("active");
+      }, 600);
+    }
+  </script>
+
+</body>
 </html>
